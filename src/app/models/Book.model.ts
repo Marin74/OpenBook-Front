@@ -2,6 +2,7 @@ import {Genre} from "./Genre.model";
 import {Author} from "./Author.model";
 
 export class Book {
+  id: number
   subtitle: string;
   originalTitle: string;
   summary: string;
@@ -10,5 +11,5 @@ export class Book {
   genre: Genre;
   authors: Author[];
 
-  constructor(public id: number, public title: string) {}
+  constructor(public title: string) {}
 }

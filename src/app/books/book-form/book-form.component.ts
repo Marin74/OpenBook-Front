@@ -12,9 +12,9 @@ import {Book} from "../../models/Book.model";
 export class BookFormComponent implements OnInit {
 
   bookForm: FormGroup;
-  fileIsUploading = false;
-  fileUrl: string;
-  fileUploaded = false;
+  fileIsUploading = false;// TODO Delete later
+  /*fileUrl: string;
+  fileUploaded = false;*/
 
   constructor(private formBuilder: FormBuilder,
               private booksService: BooksService,
@@ -27,29 +27,29 @@ export class BookFormComponent implements OnInit {
   initForm() {
     this.bookForm = this.formBuilder.group({
         title: ['', Validators.required],
-        author: ['', Validators.required],
-        publicationYear: null,
-        description: ''
+        //author: ['', Validators.required],
+        publicationYear: null,//['', Validators.pattern("/^[0-9]*$/")],// TODO Does not work
+        summary: ''
       }
     );
   }
 
   onSaveBook() {
     const title = this.bookForm.get("title").value;
-    const author = this.bookForm.get("author").value;
+    //const author = this.bookForm.get("author").value;
     const publicationYear = this.bookForm.get("publicationYear").value;
-    const summary = this.bookForm.get("description").value;
-    const newBook = new Book(title, author);
+    const summary = this.bookForm.get("summary").value;
+    const newBook = new Book(title);
     newBook.publicationYear = publicationYear;
     newBook.summary = summary;
-    if(this.fileUrl && this.fileUrl !== "") {
+    /*if(this.fileUrl && this.fileUrl !== "") {
       newBook.picture = this.fileUrl;
-    }
+    }*/
     this.booksService.createNewBook(newBook);
     this.router.navigate(["/books"]);
   }
 
-  onUploadFile(file: File) {
+  /*onUploadFile(file: File) {
     this.fileIsUploading = true;
     this.booksService.uploadFile(file).then(
       (url: string) => {
@@ -62,5 +62,5 @@ export class BookFormComponent implements OnInit {
 
   detectFiles(event) {
     this.onUploadFile(event.target.files[0]);
-  }
+  }*/
 }

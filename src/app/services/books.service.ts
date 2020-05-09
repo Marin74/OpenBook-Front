@@ -21,8 +21,48 @@ export class BooksService {
     this.booksSubject.next(this.books);
   }
 
-  saveBooks() {
-    firebase.database().ref("/books").set(this.books);
+  saveBooks(book: Book) {
+    //firebase.database().ref("/books").set(this.books);
+
+    return new Promise(
+      (resolve, reject) => {
+
+        this.httpClient.post(
+          this.API_BASE+"books/new",
+          book
+        ).subscribe(
+          (response) => {
+            alert("ok");
+            alert(response);
+          },
+          (error) => {
+            alert(error);
+          }
+        );
+
+        /*this.httpClient.get<JsonArray[]>(
+          this.API_BASE+"books/new"
+        ).subscribe(
+          (response) => {
+            if("book" in response) {
+              //this.books = response["book"];
+              //this.createNewBook(response["book"]);
+              //this.emitBooks();
+              resolve(response["book"]);
+            }
+            else {
+              console.log(response["errors"]);
+              reject(response["errors"]);
+            }
+            console.log("Données récupérées en base de données");
+          },
+          (error) => {
+            reject(error);
+            console.log("Erreur lors de la récupération des données : " + error)
+          }
+        );*/
+      }
+    );
   }
 
   getBooks() {
@@ -153,9 +193,35 @@ export class BooksService {
     );
   }
 
+  getGenres() {
+    return new Promise(
+      (resolve, reject) => {
+
+        this.httpClient.get<JsonArray[]>(
+          this.API_BASE+"genres"
+        ).subscribe(
+          (response) => {
+            if("genres" in response) {
+              resolve(response["genres"]);
+            }
+            else {
+              console.log(response["errors"]);
+              reject(response["errors"]);
+            }
+            console.log("Données récupérées en base de données");
+          },
+          (error) => {
+            reject(error);
+            console.log("Erreur lors de la récupération des données : " + error)
+          }
+        );
+      }
+    );
+  }
+
   createNewBook(book: Book) {
     this.books.push(book);
-    this.saveBooks();
+    this.saveBooks(book);
     this.emitBooks();
   }
 
@@ -181,7 +247,7 @@ export class BooksService {
     );
 
     this.books.splice(bookIndexToRemove, 1);
-    this.saveBooks();
+    //this.saveBooks();
     this.emitBooks();
   }
 

@@ -10,12 +10,12 @@
         </label>
         <input type="text" class="form-control" id="title" formControlName="title">
       </div>
-      <div class="form-group">
+      <!--<div class="form-group">
         <label for="author">
           Auteur
         </label>
         <input type="text" class="form-control" id="author" formControlName="author">
-      </div>
+      </div>-->
       <div class="form-group">
         <label for="publicationYear">
           Année de parution (facultatif)
@@ -23,18 +23,18 @@
         <input type="text" class="form-control" id="publicationYear" formControlName="publicationYear">
       </div>
       <div class="form-group">
-        <label for="description">
+        <label for="summary">
           Description (facultatif)
         </label>
-        <textarea class="form-control" id="description" formControlName="description"></textarea>
+        <textarea class="form-control" id="summary" formControlName="summary"></textarea>
       </div>
-      <div class="form-group">
+      <!--<div class="form-group">
         <label for="file">
           Ajouter une photo (facultatif)
         </label>
         <input id="file" type="file" class="form-control" (change)="detectFiles($event)" accept="image/*">
         <p class="text-success" *ngIf="fileUploaded">Fichier chargé</p>
-      </div>
+      </div>-->
       <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid || fileIsUploading">Enregistrer</button>
     </form>
   </div>
