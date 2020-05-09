@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-lg-4 col-md-8">
+    <h2>Livres</h2>
+
+    <p>
+      <button type="button" class="btn btn-primary" (click)="onNewBook()">Nouveau livre</button>
+    </p>
+
+    <!--<div class="list-group">
+      <a class="list-group-item list-group-item-action"
+         style="cursor: pointer;"
+         *ngFor="let book of books"
+         (click)="onViewBook(book.id)">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ book.title }}</h5>
+          <small *ngIf="book.publicationYear">{{ book.publicationYear }}</small>
+        </div>
+        <p class="mb-1" *ngIf="book.authors">
+          <span *ngFor="let author of book.authors; let i = index;"><span *ngIf="i > 0">, </span>{{ author.name }}</span>
+        </p>
+      </a>
+    </div>-->
+
+
+    <div class="card mb-3" style="max-width: 540px; cursor: pointer;"
+         *ngFor="let book of books"
+         (click)="onViewBook(book.id)">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img *ngIf="book.picture" [src]="book.picture" class="card-img" title="{{ book.title }}">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text" *ngIf="book.authors"><span *ngFor="let author of book.authors; let i = index;"><span *ngIf="i > 0">, </span>{{ author.name }}</span></p>
+            <p class="card-text" *ngIf="book.publicationYear"><small class="text-muted">{{ book.publicationYear }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
