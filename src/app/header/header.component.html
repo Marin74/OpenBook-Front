@@ -3,8 +3,7 @@
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" routerLink="books" routerLinkActive="active" (click)="setTitle('Livres - OpenBook')">Livres</a>
       <a class="p-2 text-dark" routerLink="authors" routerLinkActive="active" (click)="setTitle('Auteurs - OpenBook')">Auteurs</a>
-      <a class="p-2 text-dark" routerLink="auth/signin" routerLinkActive="active" *ngIf="!isAuth" (click)="setTitle('Se connecter - OpenBook')">Se connecter</a>
-      <a class="p-2 text-dark" (click)="onSignOut()" *ngIf="isAuth" style="cursor: pointer;">Se déconnecter</a>
   </nav>
-  <a class="btn btn-outline-primary" routerLink="auth/signup" routerLinkActive="active" *ngIf="!isAuth" (click)="setTitle('S\'inscrire - OpenBook')">S'inscrire</a>
+  <button class="btn btn-outline-primary" (click)="onSignOut()" *ngIf="isAuth">Se déconnecter</button>
+  <a class="btn btn-outline-primary" routerLink="auth/signin" routerLinkActive="active" *ngIf="!isAuth" (click)="setTitle('Se connecter - OpenBook')">Se connecter</a>
 </div>

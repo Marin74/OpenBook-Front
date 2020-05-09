@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-sm-8">
     <h2>Créer un compte</h2>
+
+    <p>
+      Déjà inscrit ? <a routerLink="/auth/signin">Connectez-vous</a>.
+    </p>
+
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
       <div class="form-group">
