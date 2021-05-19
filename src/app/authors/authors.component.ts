@@ -26,6 +26,10 @@ export class AuthorsComponent implements OnInit {
   }
 
   onViewAuthor(id: number) {
-    this.router.navigate(["/authors/", id]);
+    this.router.navigate(["/authors", id]);
+  }
+
+  onNewAuthor() {
+    this.router.navigate(["/authors", "new"]);
   }
 }

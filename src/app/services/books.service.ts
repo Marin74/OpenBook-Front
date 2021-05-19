@@ -4,6 +4,7 @@ import {Subject} from "rxjs/Subject";
 import * as firebase from "firebase";
 import {HttpClient} from "@angular/common/http";
 import {JsonArray} from "@angular/compiler-cli/ngcc/src/packages/entry_point";
+import {Author} from "../models/Author.model";
 
 @Injectable({
   providedIn: 'root'
@@ -223,6 +224,48 @@ export class BooksService {
     this.books.push(book);
     this.saveBooks(book);
     this.emitBooks();
+  }
+
+  createNewAuthor(author: Author) {
+
+    this.httpClient.post(this.API_BASE+"authors/new",
+      {
+        "name": author.name
+      })
+      .subscribe(
+        (val) => {
+          alert("ok1");
+          console.log("POST call successful value returned in body",
+            val);
+        },
+        response => {
+          alert("ok2");
+          console.log("POST call in error", response);
+        },
+        () => {
+          alert("ok3");
+          console.log("The POST observable is now completed.");
+        });
+
+    /*return new Promise(
+      (resolve, reject) => {
+
+        this.httpClient.post(
+          this.API_BASE+"authors/new",
+          //author
+          {"name": author.name}
+        ).subscribe(
+          (response) => {
+            alert("ok");
+            alert(response);
+          },
+          (error) => {
+            alert("erreur");
+            alert(error);
+          }
+        );
+      }
+    );*/
   }
 
   removeBook(book: Book) {

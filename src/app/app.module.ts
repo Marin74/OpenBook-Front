@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { AuthorComponent } from './authors/author/author.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { AuthorFormComponent } from './authors/author-form/author-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthorsComponent } from './authors/authors.component';
     BookFormComponent,
     HeaderComponent,
     AuthorComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    AuthorFormComponent
   ],
   imports: [
     BrowserModule,

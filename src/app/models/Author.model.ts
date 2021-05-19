@@ -1,9 +1,10 @@
 export class Author {
 
+  id: number;
   photo: string;
   birthDate: Date;
   deathDate: Date;
   picture: string;
 
-  constructor(public id: number, public name: string) {}
+  constructor(public name: string) {}
 }

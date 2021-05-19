@@ -19,7 +19,7 @@ export class AuthorComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    this.author = new Author(0, "");
+    this.author = new Author("");
     const id = this.route.snapshot.params["id"];
     this.booksService.getAuthor(+id).then(
       (jsonResponse: any) => {
